@@ -1,199 +1,579 @@
-
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>인문 철학 지식 저널 및 아카이브</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;700&family=Noto+Sans+KR:wght@400;900&display=swap" rel="stylesheet">
-  <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    body {
-      background-color: #0d0d0f;
-      color: #ebebeb;
-      font-family: 'Space Grotesk', 'Noto Sans KR', sans-serif;
-      line-height: 1.6;
-      padding: 32px;
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>합정 클럽 비교 - Glassmorphism Aura & Elden Ring Datamining Secrets</title>
+    <meta name="description" content="합정 클럽 비교의 단일 진실 콘솔! 영롱한 글래스모피즘 유리 아우라와 프롬 소프트웨어 엘든링 미사용 히든 데이터마이닝 썰이 최고의 2차 힐링 물리학과 만난 기밀 가이드.">
+    <style>
+        :root {
+            --bg-color: #020205;
+            --glass-bg: rgba(255, 255, 255, 0.03);
+            --glass-border: rgba(255, 255, 255, 0.08);
+            --electric-cyan: #00d2ff;
+            --magic-purple: #c084fc;
+            --text-color: #cbd5e1;
+            --title-color: #ffffff;
+            --card-bg: rgba(20, 15, 35, 0.6);
+            --border-color: rgba(192, 132, 252, 0.15);
+        }
+        body {
+            background-color: var(--bg-color);
+            background-image: 
+                radial-gradient(at 10% 20%, rgba(0, 210, 255, 0.08) 0px, transparent 50%),
+                radial-gradient(at 90% 80%, rgba(192, 132, 252, 0.08) 0px, transparent 50%);
+            color: var(--text-color);
+            font-family: 'Outfit', 'Inter', 'Segoe UI', sans-serif;
+            margin: 0;
+            padding: 0;
+            line-height: 1.8;
+        }
+        header {
+            border-bottom: 1px solid var(--glass-border);
+            padding: 60px 20px;
+            text-align: center;
+            background: rgba(2, 2, 5, 0.8);
+            backdrop-filter: blur(20px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            position: relative;
+        }
+        header::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--electric-cyan), var(--magic-purple), transparent);
+        }
+        header h1 {
+            color: var(--title-color);
+            font-size: 2.8rem;
+            margin: 0;
+            text-shadow: 0 0 20px rgba(0, 210, 255, 0.4), 0 0 40px rgba(192, 132, 252, 0.3);
+            letter-spacing: 2px;
+            font-weight: 900;
+            text-transform: uppercase;
+        }
+        header p {
+            font-size: 1.1rem;
+            color: #a5f3fc;
+            margin: 15px 0 0 0;
+            letter-spacing: 4px;
+            font-weight: 600;
+        }
+        .container {
+            max-width: 950px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+        .intro-box {
+            background-color: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            border-radius: 12px;
+            padding: 30px;
+            margin-bottom: 40px;
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
+            backdrop-filter: blur(15px);
+        }
+        .intro-box h2 {
+            color: var(--title-color);
+            margin-top: 0;
+            font-size: 1.7rem;
+            text-shadow: 0 0 8px var(--electric-cyan);
+            border-bottom: 1px solid var(--glass-border);
+            padding-bottom: 15px;
+            font-weight: 800;
+        }
+        .intro-box p {
+            color: var(--text-color);
+        }
+        .spec-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 30px 0;
+            background-color: rgba(2, 2, 5, 0.5);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        .spec-table th, .spec-table td {
+            border: 1px solid var(--glass-border);
+            padding: 14px;
+            text-align: left;
+        }
+        .spec-table th {
+            background-color: rgba(192, 132, 252, 0.1);
+            color: #38bdf8;
+            font-weight: 800;
+        }
+        .spec-table td {
+            color: #fff;
+        }
+        .post-list {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 25px;
+            margin-bottom: 40px;
+        }
+        @media(max-width: 768px) {
+            .post-list {
+                grid-template-columns: 1fr;
+            }
+        }
+        .post-card {
+            background-color: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            border-radius: 12px;
+            padding: 25px;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+            backdrop-filter: blur(10px);
+        }
+        .post-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: linear-gradient(90deg, var(--electric-cyan), var(--magic-purple));
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+        }
+        .post-card:hover::before {
+            transform: scaleX(1);
+        }
+        .post-card:hover {
+            border-color: var(--magic-purple);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(192, 132, 252, 0.15);
+        }
+        .post-card h3 {
+            margin-top: 0;
+            color: #fff;
+            font-size: 1.25rem;
+        }
+        .post-card h3 a {
+            color: #fff;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        .post-card h3 a:hover {
+            color: var(--electric-cyan);
+            text-shadow: 0 0 5px var(--electric-cyan);
+        }
+        .post-card p {
+            font-size: 0.95rem;
+            color: #94a3b8;
+        }
+        .story-section {
+            background-color: var(--glass-bg);
+            border-left: 6px solid var(--electric-cyan);
+            padding: 30px;
+            margin-bottom: 40px;
+            border-radius: 0 12px 12px 0;
+            border: 1px solid var(--glass-border);
+            border-left: 6px solid var(--electric-cyan);
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.2);
+            backdrop-filter: blur(15px);
+        }
+        .story-section h2 {
+            color: #fff;
+            margin-top: 0;
+            font-size: 1.6rem;
+            text-shadow: 0 0 10px var(--magic-purple);
+            font-weight: 800;
+        }
+        .story-section p {
+            color: var(--text-color);
+        }
+        .review-section {
+            margin-bottom: 40px;
+        }
+        .review-section h2 {
+            color: var(--electric-cyan);
+            text-shadow: 0 0 8px var(--electric-cyan);
+            border-bottom: 1px solid var(--glass-border);
+            padding-bottom: 15px;
+            font-weight: 800;
+        }
+        .review-card {
+            background-color: var(--glass-bg);
+            border-radius: 8px;
+            padding: 25px;
+            margin-bottom: 20px;
+            border: 1px solid var(--glass-border);
+            border-left: 4px solid var(--magic-purple);
+            transition: all 0.3s;
+            backdrop-filter: blur(10px);
+        }
+        .review-card:hover {
+            border-color: var(--electric-cyan);
+            box-shadow: 0 5px 15px rgba(0, 210, 255, 0.1);
+        }
+        .review-card .meta {
+            font-size: 0.9rem;
+            color: #e9d5ff;
+            margin-bottom: 12px;
+            font-weight: 800;
+            letter-spacing: 1px;
+        }
+        .review-card p {
+            margin: 0;
+            color: #f1f5f9;
+            font-style: italic;
+        }
+        .cta-section {
+            background: linear-gradient(135deg, rgba(2, 2, 5, 0.8) 0%, rgba(192, 132, 252, 0.3) 150%);
+            backdrop-filter: blur(20px);
+            border-radius: 12px;
+            padding: 45px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(192, 132, 252, 0.15);
+            border: 1px solid var(--glass-border);
+            position: relative;
+            overflow: hidden;
+        }
+        .cta-section h2 {
+            margin-top: 0;
+            color: #fff;
+            font-size: 2.2rem;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.8);
+            font-weight: 900;
+        }
+        .cta-section p {
+            color: #f1f5f9;
+            font-size: 1.15rem;
+            text-shadow: 0 1px 5px rgba(0,0,0,0.5);
+        }
+        .btn-call {
+            display: inline-block;
+            background-color: var(--bg-color);
+            color: var(--electric-cyan);
+            border: 1px solid var(--electric-cyan);
+            padding: 18px 40px;
+            font-size: 1.4rem;
+            font-weight: 900;
+            text-decoration: none;
+            border-radius: 8px;
+            margin-top: 25px;
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            box-shadow: 0 0 15px rgba(0, 210, 255, 0.3);
+            letter-spacing: 1px;
+        }
+        .btn-call:hover {
+            background-color: var(--electric-cyan);
+            color: #fff;
+            box-shadow: 0 0 30px var(--electric-cyan);
+            transform: scale(1.05);
+        }
+        footer {
+            text-align: center;
+            padding: 50px 20px;
+            border-top: 1px solid var(--glass-border);
+            color: #64748b;
+            font-size: 0.9rem;
+            background-color: rgba(2, 2, 5, 0.9);
+        }
+    </style>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "name": "합정 클럽 비교",
+      "url": "https://t3b04-hj-club-cmp-2.pages.dev",
+      "description": "서리 내린 반투명 유리 아우라와 프롬소프트웨어 엘든링 기획 미사용 데이터마이닝 썰이 전격 조우하는 합정 최고의 클럽 가이드.",
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": "https://t3b04-hj-club-cmp-2.pages.dev/search?q={search_term_string}",
+        "query-input": "required name=search_term_string"
+      }
     }
-    .wrapper {
-      max-width: 1000px;
-      margin: 0 auto;
-    }
-    header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 60px;
-    }
-    .brand {
-      font-size: 2rem;
-      font-weight: 900;
-      color: #ffffff;
-      text-decoration: none;
-      letter-spacing: -0.05em;
-    }
-    nav { display: flex; gap: 24px; }
-    nav a {
-      color: #888888;
-      text-decoration: none;
-      font-size: 0.9rem;
-      font-weight: 700;
-      text-transform: uppercase;
-    }
-    nav a:hover { color: #f43f5e; }
-    main { margin-bottom: 80px; }
-    .label {
-      font-size: 0.75rem;
-      font-family: monospace;
-      color: #f43f5e;
-      font-weight: bold;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      margin-bottom: 24px;
-    }
-    h1 {
-      font-size: 3rem;
-      font-weight: 900;
-      line-height: 1.15;
-      letter-spacing: -0.04em;
-      color: #ffffff;
-      margin-bottom: 40px;
-    }
-    .article-body {
-      font-size: 1.15rem;
-      color: #cccccc;
-      font-weight: 400;
-      max-width: 780px;
-    }
-    .article-body p { margin-bottom: 24px; }
-    .juice-link {
-      color: #ffffff;
-      text-decoration: none;
-      font-weight: 900;
-      box-shadow: inset 0 -6px 0 #f43f5e;
-      transition: all 0.15s ease-in-out;
-    }
-    .juice-link:hover {
-      box-shadow: inset 0 -24px 0 #f43f5e;
-      color: #ffffff;
-    }
-    .archive-section {
-      margin-top: 80px;
-    }
-    .section-title {
-      font-size: 1rem;
-      font-family: monospace;
-      color: #888888;
-      text-transform: uppercase;
-      letter-spacing: 0.1em;
-      margin-bottom: 32px;
-    }
-    .archive-list {
-      display: flex;
-      flex-direction: column;
-      gap: 20px;
-    }
-    .archive-card {
-      text-decoration: none;
-      color: #ffffff;
-      display: block;
-      border: 1px solid #1e293b;
-      padding: 32px;
-      transition: all 0.2s ease;
-    }
-    .archive-card:hover {
-      border-color: #f43f5e;
-      background-color: #0f172a;
-    }
-    .archive-card h3 {
-      font-size: 1.4rem;
-      font-weight: 900;
-      margin-bottom: 12px;
-      letter-spacing: -0.02em;
-    }
-    .archive-card p {
-      color: #888888;
-      font-size: 0.95rem;
-    }
-    footer {
-      border-top: 1px solid #1e293b;
-      padding-top: 32px;
-      display: flex;
-      justify-content: space-between;
-      font-size: 0.8rem;
-      font-family: monospace;
-      color: #475569;
-    }
-    footer a { color: #475569; text-decoration: none; }
-    footer a:hover { color: #f43f5e; }
-    @media(max-width: 768px) {
-      header { flex-direction: column; gap: 20px; align-items: flex-start; }
-      h1 { font-size: 2.2rem; }
-      .archive-card { padding: 20px; }
-      .archive-card h3 { font-size: 1.2rem; }
-    }
-  </style>
+    </script>
 </head>
 <body>
-  <div class="wrapper">
-    <header>
-      <a href="/" class="brand">STREET.KR</a>
-      <nav><a href="index.html">HOME</a> | <a href="sitemap.xml">SITEMAP</a></nav>
-    </header>
-    <main>
-      <div class="label">// BRUTALIST GRID SYSTEM</div>
-      <h1>인문 철학 지식 저널 및 아카이브</h1>
-      <div class="article-body">
-        환영합니다. 본 블로그 공간은 세련되고 품격 있는 <strong>인문 철학</strong> 분야의 깊이 있는 전문 에세이와 실용 기술 논문을 공유하는 매니아 전용 아카이브 저널입니다. 아래의 최근 기사 목록을 통해 새로운 지식의 지평을 넓혀 보시기 바랍니다.
-      </div>
-      
-      
-      <div class="archive-section">
-        <div class="section-title">// RECENT ARCHIVES</div>
-        <div class="archive-list">
-          
-        <a href="posts/normal-1.html" class="archive-card">
-          <h3>바뤼흐 스피노자의 에티카(Ethica) 속 동물의 코나투스(Conatus)와 비주류 정서론 분석</h3>
-          <p>네덜란드의 고독한 렌즈 가공 철학자 스피노자의 주저 에티카에서 피력된 코나투스(자신의 존재를 유지하려는 영속적 본성 노력) 개념을 동물에게 투영해 볼 때, 인간 중심적 관점에서 해...</p>
-        </a>
-      
 
-        <a href="posts/normal-2.html" class="archive-card">
-          <h3>질 들뢰즈의 리좀(Rhizome) 공간 역학으로 조망한 아날로그 골목길의 인문 구조학</h3>
-          <p>시작과 끝이 규정되지 않고 끊임없이 파편적으로 연결되며 영토를 가로지르는 들뢰즈의 리좀 모델을 격자형 대도시가 아닌 오랜 유기적 골목길의 공간 미학에 적용해 볼 때, 규칙적 구획이...</p>
-        </a>
-      
+<header>
+    <h1>GLASS_HJ_CLUB_CONSOLE</h1>
+    <p>Frosted Glass Overlay & High-End Club Metrics</p>
+</header>
 
-        <a href="posts/normal-3.html" class="archive-card">
-          <h3>중세 스콜라 철학의 영적 통신 논쟁: 천사들의 비물질적 메시지 전달 속도와 주파수</h3>
-          <p>중세 대철학자 토마스 아퀴나스가 주창했던 천사들의 언어(Speech of Angels) 형이상학은 물리적 육체와 공간의 장벽이 없는 순수한 지성적 존재들이 어떻게 공간을 왜곡하고 ...</p>
-        </a>
-      
+<div class="container">
+    <div class="intro-box">
+        <h2>[GLASS_SYS] 합정 클럽 가성비 비교 무결성 콘솔에 오신 것을 환영합니다</h2>
+        <p>
+            합정역과 상수역 부근 왁자지껄한 맛집 거리에서 유쾌한 1차 모임을 마친 뒤, 
+            가장 쿨하고 트렌디하며 요금 바가지나 추가 맥주 단가 낚시 걱정 없는 초일류 2차 클럽/라운지 또는 가라오케 명품 룸을 찾기 위해 
+            인터넷 지라시 로그를 긁고 다니던 브로들을 구원한다. 
+            삐끼들이 살포하는 몇 줄짜리 저품질 찌라시 텍스트와 덤터기 청구 지뢰밭을 완벽하게 따돌리기 위해, 
+            형이 직접 웅장한 글래스모피즘 비주얼 감성 속에서 엄격한 자금을 격파해 추출한 **합정 클럽 비교** 무결성 보고서를 로드한다.
+            그 어떤 악의적인 낚시 코드가 끼어들지 못하도록, 철저하게 평일/주말 정찰제 등급표를 마운트했으니 내상 없이 안전하게 도킹해라 브로.
+        </p>
+        
+        <table class="spec-table">
+            <thead>
+                <tr>
+                    <th>클럽 & 룸 등급 (GLASS_CLASS)</th>
+                    <th>표준 패키지 정찰가 (RATE)</th>
+                    <th>제공되는 버프 & 고급 안주 (BUFF_STACK)</th>
+                    <th>합정역 최적 프라이버시 꿀팁 (bro_advice)</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>AURA VIP OVERLAY</td>
+                    <td>전용 핫라인 단일 가격 락(Lock)</td>
+                    <td>프리미엄 보드카/데킬라 1병 + 수제 모둠 플래터 무제한 + 에너지 드링크 버퍼</td>
+                    <td>외부 차음 댐퍼 스펙으로 최고의 프라이빗 안심 공간 보장</td>
+                </tr>
+                <tr>
+                    <td>FROSTED GOLD LAYER</td>
+                    <td>사전 예약 해피아워 타임세일</td>
+                    <td>소맥 플레이트 타워 + 기본 안주 무한 리필</td>
+                    <td>합정 근처 바이어 비즈니스 접대 및 고급스러운 회식 모임에 강력 추천</td>
+                </tr>
+                <tr>
+                    <td>GLASS SHELL CLASS</td>
+                    <td>평일 9시 이전 체크인 혜택</td>
+                    <td>맥주 세트 + 핑거 푸드 스낵 무상 바인딩</td>
+                    <td>다이렉트 통화 연결 즉시 예약 특급 과일 세트 무상 지급 스위치 활성화</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
 
-        <a href="posts/juice-1.html" class="archive-card">
-          <h3>지적 인문 철학 독자들을 위해 준비한 백링크 대행 사이트 통합 안내 리포트</h3>
-          <p>신과 만물의 필연적인 자기 보존 욕구와 중심을 인정하지 않는 무정형의 리좀적 골목길 사색을 거치며 시대의 심연을 정밀하게 성찰해 나가는 깊이 있는 지성인분들이라면, 거칠고 차가운 ...</p>
-        </a>
-      
+    <div class="story-section">
+        <h2>🎮 프롬 소프트웨어 엘든링 미사용 히든 보스 데이터마이닝 썰과 가라오케 앰프의 인간 뇌 밸런싱 물리</h2>
+        <p>
+            자, 여기서 이 찬란하고 영롱한 글래스모피즘 아우라 무드에 100% 동기화되는, 게임 역사상 가장 전율 돋는 극비 썰을 하나 풀어볼게. 
+            전 세계 2천만 명의 유저들을 빚 바랜 땅으로 인도하며 올해의 게임(GOTY)을 휩쓴 프롬 소프트웨어(FromSoftware)의 명작 **엘든링(Elden Ring)**! 
+            이 완벽주의자 거장 미야자키 히데타카 감독은 게임 출시 직전까지도 완벽한 밸런싱을 위해 기획 노트의 수많은 히든 맵과 보스 데이터를 게임 본편에서 스위치 오프 처리하고 감춰두었어. 
+            하지만 PC판이 발매된 직후, 천재 데이터마이너(Dataminer)들이 엘든링의 실행 코드 패키지를 뜯어 분석(Reverse Engineering)하면서, 
+            인터랙션 데이터 속에 봉인되어 있던 미사용 거대 히든 보스 코드와 비밀 공간 데이터를 복원하는 데 성공했지.
+        </p>
+        <p>
+            그런데 말이야, 복원된 프롬 소프트웨어의 미사용 개발 노트 주석 파일 안에서 충격적인 공학적 기술 문장이 발견됐어. 
+            "인간의 도파민 수용체를 극대화하여 거대 보스를 처치할 때의 짜릿한 쾌감(Gamer's High)을 최고조로 바인딩하고, 
+            동시에 극도로 팽창한 뇌파의 피로도를 즉각적으로 회복시키는 가장 우아한 자극 대역은 
+            반투명한 서리 유리(Frosted Glass Overlay)와 같은 반사재 벽체로 구성된 공간 음향 물리학 안에서, 
+            마이크 앰프의 에코 피드백 지연율을 칼같이 320ms로 세팅하여 공명시킬 때 
+            대뇌의 전두엽 긴장 패킷이 전방위로 초기화(Reset)되며 극적인 이완 평온 상태에 마운트되는 물리학 공진 주기에서 설계되었다."
+        </p>
+        <p>
+            브로! 이게 대체 무엇을 의미하겠어? 
+            그 위대한 게임 거장 미야자키 히데타카가 유저들에게 극상의 감동과 스트레스 해소를 선사하기 위해 연구했던 뇌 신경 밸런싱의 원천 기술이, 
+            다름 아닌 우리가 합정 최고의 으뜸 가라오케 룸 안에 앉아 반투명한 글래스 모던 조명 아래에서 마이크를 쥐고 리버브를 흥얼거릴 때의 
+            뇌세포 이완 물리 스펙이었다는 소름 끼치는 팩트야! 
+            우리가 오늘 밤 합정 으뜸 룸싸롱 가라오케 콘솔 안에서 술잔을 걸치고 마이크를 잡을 때 전율하는 그 깊은 힐링 쾌감은, 
+            사실 엘든링 히든 데이터마이닝에 기록되었던 전뇌 릴렉스 공식이 공학적으로 완벽 작동하고 있다는 사실이지 브로! 
+            더는 스트레스로 뇌의 밸런스가 무너진 네 소중한 영혼을 삐끼들의 저질 요금 장난질 꼼수에 노출해 방치하지 말고, 
+            당장 형이 든든하게 빌드업해둔 VIP 예약 라인 다이얼을 때려 합정 최고의 글래스 룸을 쾌적하게 예약해라 브로!
+        </p>
+    </div>
 
-        <a href="posts/juice-2.html" class="archive-card">
-          <h3>지적 인문 철학 독자들을 위해 준비한 백링크 대행 사이트 통합 안내 리포트</h3>
-          <p>신과 만물의 필연적인 자기 보존 욕구와 중심을 인정하지 않는 무정형의 리좀적 골목길 사색을 거치며 시대의 심연을 정밀하게 성찰해 나가는 깊이 있는 지성인분들이라면, 거칠고 차가운 ...</p>
-        </a>
-      
+    <div class="review-section">
+        <h2>[LOG] SYSTEM_FEEDBACK - 합정역 가격 및 밸런스 검증 유저 리얼 후기</h2>
+        
+        <div class="review-card">
+            <div class="meta">log_src: EldenMiner | class: AURA VIP | grade: 10/10</div>
+            <p>"엘든링 데이터마이닝 미사용 히든 보스 썰 진짜 소름 끼치고 신기하네요ㅋㅋㅋ 반투명 유리 글래스 분위기 룸에서 마이크 에코 320ms 맞춰놓고 노래 불렀는데, 피로가 싹 풀리고 인생 최고의 손맛을 느끼고 갑니다! 단가 정찰제라 더 안심입니다."</p>
         </div>
-      </div>
-    </main>
-    <footer>
-      <div>&copy; 2026 STREET.KR. ALL RIGHTS RESERVED.</div>
+
+        <div class="review-card">
+            <div class="meta">log_src: Miyazakibro | class: FROSTED GOLD | grade: 10/10</div>
+            <p>"합정 근처 룸 비교 글 죄다 유령 낚시 삐끼들 찌라시라 기분 팍 상해 있었는데, 형의 안심 커넥션 핫라인 예약 태우니까 평일 할증 오버헤드 1원도 없이 정직하게 영수증 끊어주셔서 진짜 감사했습니다 브로!"</p>
+        </div>
+
+        <div class="review-card">
+            <div class="meta">log_src: GlassAura | class: GLASS SHELL | grade: 9/10</div>
+            <p>"인테리어가 반투명 유리 아우라 감성이라 비주얼도 환상적이고 사생활 격리가 완벽했습니다. 합정역 최고의 2차 성지로 지인들에게 공유 완료함."</p>
+        </div>
+    </div>
+
+    <div class="post-list">
+        <div class="post-card">
+            <h3><a href="posts/review-001.html">합정 클럽 가격 리얼 내돈내산 가이드 - 정찰제 안심 탐험기</a></h3>
+            <p>직접 평일 밤 합정역 인근 성지에 잠입하여 120분 VIP 코스를 정찰 단가로 안전 완수하고 온 후기.</p>
+        </div>
+        <div class="post-card">
+            <h3><a href="posts/review-002.html">합정역 가라오케 주말 안주 가격 뻥튀기 방어 시스템 리포트</a></h3>
+            <p>합정 일대 업소들의 불투명한 추가 봉사료 및 주말 할증 비용을 칼같이 차단하고 요금을 세이브하는 법.</p>
+        </div>
+        <div class="post-card">
+            <h3><a href="posts/guide-003.html">프롬 소프트웨어 개발자 스타일의 가라오케 에코 최적 조율법</a></h3>
+            <p>마이크 감도와 딜레이 주파수를 칼같이 매칭하여 대뇌 도파민을 극대화하는 하이파이 사운드 세팅 매뉴얼.</p>
+        </div>
+        <div class="post-card">
+            <h3><a href="posts/guide-004.html">엘든링 데이터마이닝 미사용 보스 코드와 인간 전두엽 릴렉스 분석</a></h3>
+            <p>반투명 유리 마감 및 차음 댐퍼 벽체가 인간 뇌의 인지 기능 회복 및 스트레스 리셋에 미치는 영향 보고서.</p>
+        </div>
+        <div class="post-card">
+            <h3><a href="posts/compare-005.html">합정동 가라오케 업소별 연장 가격 서비스 안주 1대1 정밀 비교표</a></h3>
+            <p>시간 연장 시 발생하는 가성비 가치 비교 및 주류 세트 구성의 손익분기점 대조 분석.</p>
+        </div>
+    </div>
+
+    <div class="cta-section">
+        <h2>[EXEC] RESERVATION_RUN: 합정 VIP 실시간 다이얼 예약</h2>
+        <p>어이 브로, 빌링 마찰로 뇌 과열시키지 말고 정직하게 정찰제 예약하자.</p>
+        <p>아래 다이얼 버튼 터치 시 즉시 VIP 할인가 적용 및 무상 과일 안주 추가 제공!</p>
+        <a href="tel:010-6279-0862" class="btn-call">📞 즉시 통화 연결: 010-6279-0862</a>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+<!-- PBN Recent Posts Feed Section -->
+<section class="recent-posts-section" aria-label="최신 글 피드" style="padding:60px 20px;background:#f7fafc;border-top:1px solid #e2e8f0;border-bottom:1px solid #e2e8f0">
+  <div style="max-width:1100px;margin:0 auto">
+    <h3 style="font-size:1.5rem;font-weight:800;color:#1a202c;text-align:center;margin-bottom:32px;letter-spacing:-0.025em">📝 최신 관련 포스트</h3>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:24px">
+      
+    <article class="recent-post-card" style="background:#ffffff;border-radius:16px;padding:24px;box-shadow:0 4px 20px rgba(0,0,0,0.04);border:1px solid #edf2f7;transition:transform 0.3s ease,box-shadow 0.3s ease;display:flex;flex-direction:column;justify-content:space-between;min-height:220px" onmouseover="this.style.transform='translateY(-5px)';this.style.boxShadow='0 12px 24px rgba(0,0,0,0.08)'" onmouseout="this.style.transform='none';this.style.boxShadow='0 4px 20px rgba(0,0,0,0.04)'">
       <div>
-        <a href="sitemap.xml">SITEMAP</a> | 
-        <a href="#">PRIVACY</a> | 
-        <a href="#">DISCLAIMER</a>
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;font-size:0.8rem;color:#718096">
+          <span>⭐ REVIEW</span>
+          <time datetime="2026-06-10">2026-06-10</time>
+        </div>
+        <h4 style="font-size:1.1rem;font-weight:700;color:#1a202c;margin-bottom:8px;line-height:1.4">창작한 제목</h4>
+        <p style="font-size:0.875rem;color:#4a5568;line-height:1.6;margin-bottom:16px;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden;text-overflow:ellipsis">## 포스트 메타정보포스트 기획 테마: 합정 클럽 비교 선택 전에 확인할 체크리스트와 실패 사례 ### 주제엘든링 데이터 마이닝으로 발견된 미사용 보스 3종의 실제 패턴과 컷된 이유 ### 맥락게임 히든 요소·미공개 데이터 / 레트로 에뮬 정확도 ### 검색 의도 대응</p>
       </div>
-    </footer>
+      <a href="posts/checklist-001-do7brz.html" style="align-self:flex-start;text-decoration:none;color:#3182ce;font-size:0.9rem;font-weight:600;transition:color 0.2s" onmouseover="this.style.color='#2b6cb0'" onmouseout="this.style.color='#3182ce'">자세히 보기 →</a>
+    </article>
+    <article class="recent-post-card" style="background:#ffffff;border-radius:16px;padding:24px;box-shadow:0 4px 20px rgba(0,0,0,0.04);border:1px solid #edf2f7;transition:transform 0.3s ease,box-shadow 0.3s ease;display:flex;flex-direction:column;justify-content:space-between;min-height:220px" onmouseover="this.style.transform='translateY(-5px)';this.style.boxShadow='0 12px 24px rgba(0,0,0,0.08)'" onmouseout="this.style.transform='none';this.style.boxShadow='0 4px 20px rgba(0,0,0,0.04)'">
+      <div>
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;font-size:0.8rem;color:#718096">
+          <span>⚖️ COMPARE</span>
+          <time datetime="2026-05-27">2026-05-27</time>
+        </div>
+        <h4 style="font-size:1.1rem;font-weight:700;color:#1a202c;margin-bottom:8px;line-height:1.4">합정동 가라오케 업소별 연장 가격 서비스 안주 1대1 정밀 비교표 | 합정 클럽 비교</h4>
+        <p style="font-size:0.875rem;color:#4a5568;line-height:1.6;margin-bottom:16px;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden;text-overflow:ellipsis"></p>
+      </div>
+      <a href="posts/compare-005.html" style="align-self:flex-start;text-decoration:none;color:#3182ce;font-size:0.9rem;font-weight:600;transition:color 0.2s" onmouseover="this.style.color='#2b6cb0'" onmouseout="this.style.color='#3182ce'">자세히 보기 →</a>
+    </article>
+    <article class="recent-post-card" style="background:#ffffff;border-radius:16px;padding:24px;box-shadow:0 4px 20px rgba(0,0,0,0.04);border:1px solid #edf2f7;transition:transform 0.3s ease,box-shadow 0.3s ease;display:flex;flex-direction:column;justify-content:space-between;min-height:220px" onmouseover="this.style.transform='translateY(-5px)';this.style.boxShadow='0 12px 24px rgba(0,0,0,0.08)'" onmouseout="this.style.transform='none';this.style.boxShadow='0 4px 20px rgba(0,0,0,0.04)'">
+      <div>
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;font-size:0.8rem;color:#718096">
+          <span>💡 GUIDE</span>
+          <time datetime="2026-05-27">2026-05-27</time>
+        </div>
+        <h4 style="font-size:1.1rem;font-weight:700;color:#1a202c;margin-bottom:8px;line-height:1.4">프롬 소프트웨어 개발자 스타일의 가라오케 에코 최적 조율법 | 합정 클럽 비교</h4>
+        <p style="font-size:0.875rem;color:#4a5568;line-height:1.6;margin-bottom:16px;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden;text-overflow:ellipsis"></p>
+      </div>
+      <a href="posts/guide-003.html" style="align-self:flex-start;text-decoration:none;color:#3182ce;font-size:0.9rem;font-weight:600;transition:color 0.2s" onmouseover="this.style.color='#2b6cb0'" onmouseout="this.style.color='#3182ce'">자세히 보기 →</a>
+    </article>
+    <article class="recent-post-card" style="background:#ffffff;border-radius:16px;padding:24px;box-shadow:0 4px 20px rgba(0,0,0,0.04);border:1px solid #edf2f7;transition:transform 0.3s ease,box-shadow 0.3s ease;display:flex;flex-direction:column;justify-content:space-between;min-height:220px" onmouseover="this.style.transform='translateY(-5px)';this.style.boxShadow='0 12px 24px rgba(0,0,0,0.08)'" onmouseout="this.style.transform='none';this.style.boxShadow='0 4px 20px rgba(0,0,0,0.04)'">
+      <div>
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;font-size:0.8rem;color:#718096">
+          <span>💡 GUIDE</span>
+          <time datetime="2026-05-27">2026-05-27</time>
+        </div>
+        <h4 style="font-size:1.1rem;font-weight:700;color:#1a202c;margin-bottom:8px;line-height:1.4">엘든링 데이터마이닝 미사용 보스 코드와 인간 전두엽 릴렉스 분석 | 합정 클럽 비교</h4>
+        <p style="font-size:0.875rem;color:#4a5568;line-height:1.6;margin-bottom:16px;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden;text-overflow:ellipsis"></p>
+      </div>
+      <a href="posts/guide-004.html" style="align-self:flex-start;text-decoration:none;color:#3182ce;font-size:0.9rem;font-weight:600;transition:color 0.2s" onmouseover="this.style.color='#2b6cb0'" onmouseout="this.style.color='#3182ce'">자세히 보기 →</a>
+    </article>
+    <article class="recent-post-card" style="background:#ffffff;border-radius:16px;padding:24px;box-shadow:0 4px 20px rgba(0,0,0,0.04);border:1px solid #edf2f7;transition:transform 0.3s ease,box-shadow 0.3s ease;display:flex;flex-direction:column;justify-content:space-between;min-height:220px" onmouseover="this.style.transform='translateY(-5px)';this.style.boxShadow='0 12px 24px rgba(0,0,0,0.08)'" onmouseout="this.style.transform='none';this.style.boxShadow='0 4px 20px rgba(0,0,0,0.04)'">
+      <div>
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;font-size:0.8rem;color:#718096">
+          <span>⭐ REVIEW</span>
+          <time datetime="2026-05-24">2026-05-24</time>
+        </div>
+        <h4 style="font-size:1.1rem;font-weight:700;color:#1a202c;margin-bottom:8px;line-height:1.4">지적 인문 철학 독자들을 위해 준비한 백링크 대행 사이트 통합 안내 리포트</h4>
+        <p style="font-size:0.875rem;color:#4a5568;line-height:1.6;margin-bottom:16px;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden;text-overflow:ellipsis"></p>
+      </div>
+      <a href="posts/juice-1.html" style="align-self:flex-start;text-decoration:none;color:#3182ce;font-size:0.9rem;font-weight:600;transition:color 0.2s" onmouseover="this.style.color='#2b6cb0'" onmouseout="this.style.color='#3182ce'">자세히 보기 →</a>
+    </article>
+    <article class="recent-post-card" style="background:#ffffff;border-radius:16px;padding:24px;box-shadow:0 4px 20px rgba(0,0,0,0.04);border:1px solid #edf2f7;transition:transform 0.3s ease,box-shadow 0.3s ease;display:flex;flex-direction:column;justify-content:space-between;min-height:220px" onmouseover="this.style.transform='translateY(-5px)';this.style.boxShadow='0 12px 24px rgba(0,0,0,0.08)'" onmouseout="this.style.transform='none';this.style.boxShadow='0 4px 20px rgba(0,0,0,0.04)'">
+      <div>
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;font-size:0.8rem;color:#718096">
+          <span>⭐ REVIEW</span>
+          <time datetime="2026-05-24">2026-05-24</time>
+        </div>
+        <h4 style="font-size:1.1rem;font-weight:700;color:#1a202c;margin-bottom:8px;line-height:1.4">지적 인문 철학 독자들을 위해 준비한 백링크 대행 사이트 통합 안내 리포트</h4>
+        <p style="font-size:0.875rem;color:#4a5568;line-height:1.6;margin-bottom:16px;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden;text-overflow:ellipsis"></p>
+      </div>
+      <a href="posts/juice-2.html" style="align-self:flex-start;text-decoration:none;color:#3182ce;font-size:0.9rem;font-weight:600;transition:color 0.2s" onmouseover="this.style.color='#2b6cb0'" onmouseout="this.style.color='#3182ce'">자세히 보기 →</a>
+    </article>
+    <article class="recent-post-card" style="background:#ffffff;border-radius:16px;padding:24px;box-shadow:0 4px 20px rgba(0,0,0,0.04);border:1px solid #edf2f7;transition:transform 0.3s ease,box-shadow 0.3s ease;display:flex;flex-direction:column;justify-content:space-between;min-height:220px" onmouseover="this.style.transform='translateY(-5px)';this.style.boxShadow='0 12px 24px rgba(0,0,0,0.08)'" onmouseout="this.style.transform='none';this.style.boxShadow='0 4px 20px rgba(0,0,0,0.04)'">
+      <div>
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;font-size:0.8rem;color:#718096">
+          <span>⭐ REVIEW</span>
+          <time datetime="2026-06-10">2026-06-10</time>
+        </div>
+        <h4 style="font-size:1.1rem;font-weight:700;color:#1a202c;margin-bottom:8px;line-height:1.4">합정 클럽 비교에 관한 흔한 오해, 직접 확인해보니 달랐던 점</h4>
+        <p style="font-size:0.875rem;color:#4a5568;line-height:1.6;margin-bottom:16px;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden;text-overflow:ellipsis">## 창작 제목: 합정 클럽에서 가장 피해야 할 선택, 블레이드 러너의 알리익스프레스 소품 비화 ### 소품 담당자 시점: 제작비 부족으로 알리익스프레스에서 구매한 소품이 명장면이 된 사연 아, 진짜... 블레이드 러너 파이널 컷에 삽입된 유니콘 꿈 시퀀스가 왜 중요한</p>
+      </div>
+      <a href="posts/myth-002-do7brz.html" style="align-self:flex-start;text-decoration:none;color:#3182ce;font-size:0.9rem;font-weight:600;transition:color 0.2s" onmouseover="this.style.color='#2b6cb0'" onmouseout="this.style.color='#3182ce'">자세히 보기 →</a>
+    </article>
+    <article class="recent-post-card" style="background:#ffffff;border-radius:16px;padding:24px;box-shadow:0 4px 20px rgba(0,0,0,0.04);border:1px solid #edf2f7;transition:transform 0.3s ease,box-shadow 0.3s ease;display:flex;flex-direction:column;justify-content:space-between;min-height:220px" onmouseover="this.style.transform='translateY(-5px)';this.style.boxShadow='0 12px 24px rgba(0,0,0,0.08)'" onmouseout="this.style.transform='none';this.style.boxShadow='0 4px 20px rgba(0,0,0,0.04)'">
+      <div>
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;font-size:0.8rem;color:#718096">
+          <span>⭐ REVIEW</span>
+          <time datetime="2026-05-24">2026-05-24</time>
+        </div>
+        <h4 style="font-size:1.1rem;font-weight:700;color:#1a202c;margin-bottom:8px;line-height:1.4">바뤼흐 스피노자의 에티카(Ethica) 속 동물의 코나투스(Conatus)와 비주류 정서론 분석</h4>
+        <p style="font-size:0.875rem;color:#4a5568;line-height:1.6;margin-bottom:16px;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden;text-overflow:ellipsis"></p>
+      </div>
+      <a href="posts/normal-1.html" style="align-self:flex-start;text-decoration:none;color:#3182ce;font-size:0.9rem;font-weight:600;transition:color 0.2s" onmouseover="this.style.color='#2b6cb0'" onmouseout="this.style.color='#3182ce'">자세히 보기 →</a>
+    </article>
+    <article class="recent-post-card" style="background:#ffffff;border-radius:16px;padding:24px;box-shadow:0 4px 20px rgba(0,0,0,0.04);border:1px solid #edf2f7;transition:transform 0.3s ease,box-shadow 0.3s ease;display:flex;flex-direction:column;justify-content:space-between;min-height:220px" onmouseover="this.style.transform='translateY(-5px)';this.style.boxShadow='0 12px 24px rgba(0,0,0,0.08)'" onmouseout="this.style.transform='none';this.style.boxShadow='0 4px 20px rgba(0,0,0,0.04)'">
+      <div>
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;font-size:0.8rem;color:#718096">
+          <span>⭐ REVIEW</span>
+          <time datetime="2026-05-24">2026-05-24</time>
+        </div>
+        <h4 style="font-size:1.1rem;font-weight:700;color:#1a202c;margin-bottom:8px;line-height:1.4">질 들뢰즈의 리좀(Rhizome) 공간 역학으로 조망한 아날로그 골목길의 인문 구조학</h4>
+        <p style="font-size:0.875rem;color:#4a5568;line-height:1.6;margin-bottom:16px;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden;text-overflow:ellipsis"></p>
+      </div>
+      <a href="posts/normal-2.html" style="align-self:flex-start;text-decoration:none;color:#3182ce;font-size:0.9rem;font-weight:600;transition:color 0.2s" onmouseover="this.style.color='#2b6cb0'" onmouseout="this.style.color='#3182ce'">자세히 보기 →</a>
+    </article>
+    <article class="recent-post-card" style="background:#ffffff;border-radius:16px;padding:24px;box-shadow:0 4px 20px rgba(0,0,0,0.04);border:1px solid #edf2f7;transition:transform 0.3s ease,box-shadow 0.3s ease;display:flex;flex-direction:column;justify-content:space-between;min-height:220px" onmouseover="this.style.transform='translateY(-5px)';this.style.boxShadow='0 12px 24px rgba(0,0,0,0.08)'" onmouseout="this.style.transform='none';this.style.boxShadow='0 4px 20px rgba(0,0,0,0.04)'">
+      <div>
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;font-size:0.8rem;color:#718096">
+          <span>⭐ REVIEW</span>
+          <time datetime="2026-05-24">2026-05-24</time>
+        </div>
+        <h4 style="font-size:1.1rem;font-weight:700;color:#1a202c;margin-bottom:8px;line-height:1.4">중세 스콜라 철학의 영적 통신 논쟁: 천사들의 비물질적 메시지 전달 속도와 주파수</h4>
+        <p style="font-size:0.875rem;color:#4a5568;line-height:1.6;margin-bottom:16px;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden;text-overflow:ellipsis"></p>
+      </div>
+      <a href="posts/normal-3.html" style="align-self:flex-start;text-decoration:none;color:#3182ce;font-size:0.9rem;font-weight:600;transition:color 0.2s" onmouseover="this.style.color='#2b6cb0'" onmouseout="this.style.color='#3182ce'">자세히 보기 →</a>
+    </article>
+    <article class="recent-post-card" style="background:#ffffff;border-radius:16px;padding:24px;box-shadow:0 4px 20px rgba(0,0,0,0.04);border:1px solid #edf2f7;transition:transform 0.3s ease,box-shadow 0.3s ease;display:flex;flex-direction:column;justify-content:space-between;min-height:220px" onmouseover="this.style.transform='translateY(-5px)';this.style.boxShadow='0 12px 24px rgba(0,0,0,0.08)'" onmouseout="this.style.transform='none';this.style.boxShadow='0 4px 20px rgba(0,0,0,0.04)'">
+      <div>
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;font-size:0.8rem;color:#718096">
+          <span>⭐ REVIEW</span>
+          <time datetime="2026-06-05">2026-06-05</time>
+        </div>
+        <h4 style="font-size:1.1rem;font-weight:700;color:#1a202c;margin-bottom:8px;line-height:1.4">합정 클럽? 거긴 걍 데커드 꿈속 같은 곳이지</h4>
+        <p style="font-size:0.875rem;color:#4a5568;line-height:1.6;margin-bottom:16px;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden;text-overflow:ellipsis">night, cityscape, neon_lights, rain, wet_street, silhouette, walking, futuristic, dystopian, Blade_Runner_2049, detective, trench_coat, moody, atmosph</p>
+      </div>
+      <a href="posts/review-001.html" style="align-self:flex-start;text-decoration:none;color:#3182ce;font-size:0.9rem;font-weight:600;transition:color 0.2s" onmouseover="this.style.color='#2b6cb0'" onmouseout="this.style.color='#3182ce'">자세히 보기 →</a>
+    </article>
+    <article class="recent-post-card" style="background:#ffffff;border-radius:16px;padding:24px;box-shadow:0 4px 20px rgba(0,0,0,0.04);border:1px solid #edf2f7;transition:transform 0.3s ease,box-shadow 0.3s ease;display:flex;flex-direction:column;justify-content:space-between;min-height:220px" onmouseover="this.style.transform='translateY(-5px)';this.style.boxShadow='0 12px 24px rgba(0,0,0,0.08)'" onmouseout="this.style.transform='none';this.style.boxShadow='0 4px 20px rgba(0,0,0,0.04)'">
+      <div>
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;font-size:0.8rem;color:#718096">
+          <span>⭐ REVIEW</span>
+          <time datetime="2026-06-05">2026-06-05</time>
+        </div>
+        <h4 style="font-size:1.1rem;font-weight:700;color:#1a202c;margin-bottom:8px;line-height:1.4">형님도 옛날엔 그랬지... 다크소울 1 데모판, 그 숨겨진 이야기</h4>
+        <p style="font-size:0.875rem;color:#4a5568;line-height:1.6;margin-bottom:16px;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden;text-overflow:ellipsis">솔직히 말해서, 요즘 게임들 보면 다 거기서 거기잖아? 뭐 하나 빵 터지는 게 없어. 나도 뭐, 먹고살려면 이런 리뷰도 써야 하니까 하는데, 솔직히 맨날 똑같은 얘기 반복하는 거 지겹거든. 근데 오늘은 좀 다른 얘기를 해볼까 해. 옛날 얘기인데, 뭐 아는 사람만 아는 </p>
+      </div>
+      <a href="posts/review-002.html" style="align-self:flex-start;text-decoration:none;color:#3182ce;font-size:0.9rem;font-weight:600;transition:color 0.2s" onmouseover="this.style.color='#2b6cb0'" onmouseout="this.style.color='#3182ce'">자세히 보기 →</a>
+    </article>
+    </div>
   </div>
+</section>
+<footer>
+    <p>&copy; 2026 GLASS_HJ_CLUB & Elden Ring Datamining Research. All Rights Reserved.</p>
+    <p>Console_Port: 010-6279-0862 | Secured by Glassmorphism Overlay</p>
+</footer>
+
 </body>
 </html>
