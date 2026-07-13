@@ -1,8 +1,7 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32">
-  <defs><linearGradient id="bgt3b0" x1="0" y1="0" x2="1" y2="1">
-    <stop offset="0%" stop-color="#b71c1c"/><stop offset="100%" stop-color="#0d47a1"/>
-  </linearGradient></defs>
-  <rect width="32" height="32" rx="6" fill="url(#bgt3b0)"/>
-  <rect x="3" y="3" width="26" height="26" rx="4" fill="rgba(183,28,28,0.9)" stroke="rgba(13,71,161,0.6)" stroke-width="2"/>
-  <text x="16" y="21" text-anchor="middle" fill="#fff" font-size="8" font-weight="700" font-family="system-ui">T3</text>
+<svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 64 64" role="img">
+  <metadata>BPaaS site identity e94df2af15f829c9</metadata>
+  <rect width="64" height="64" rx="11" fill="hsl(325 48% 45%)"/>
+  <path d="M35 0h29v64H21Z" fill="hsl(110 55% 71%)" opacity="0.82"/>
+  <g transform="rotate(349 32 32)" opacity="0.42"><path d="M17 13h30v38H17zM10 24h44" fill="none" stroke="#101418" stroke-width="6" stroke-linejoin="round"/></g>
+  <text x="32" y="39" text-anchor="middle" fill="#101418" font-family="Arial,Helvetica,sans-serif" font-size="17" font-weight="700" letter-spacing="0">HS</text>
 </svg>
