@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>글 목록 (3/3) · t3b04-hj-club-cmp-2</title>
+  <meta name="description" content="t3b04-hj-club-cmp-2에 올라온 글 목록입니다.">
+  <link rel="canonical" href="https://hapjeong-song-spot.node-link.shop/posts-3.html">
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <style>
+ :root {
+ --bg-color: #020205;
+ --glass-bg: rgba(255, 255, 255, 0.03);
+ --glass-border: rgba(255, 255, 255, 0.08);
+ --electric-cyan: #00d2ff;
+ --magic-purple: #c084fc;
+ --text-color: #cbd5e1;
+ --title-color: #ffffff;
+ --card-bg: rgba(20, 15, 35, 0.6);
+ --border-color: rgba(192, 132, 252, 0.15);
+ }
+ body {
+ background-color: var(--bg-color);
+ background-image: 
+ radial-gradient(at 10% 20%, rgba(0, 210, 255, 0.08) 0px, transparent 50%),
+ radial-gradient(at 90% 80%, rgba(192, 132, 252, 0.08) 0px, transparent 50%);
+ color: var(--text-color);
+ font-family: 'Outfit', 'Inter', 'Segoe UI', sans-serif;
+ margin: 0;
+ padding: 0;
+ line-height: 1.8;
+ }
+ header {
+ border-bottom: 1px solid var(--glass-border);
+ padding: 60px 20px;
+ text-align: center;
+ background: rgba(2, 2, 5, 0.8);
+ backdrop-filter: blur(20px);
+ box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+ position: relative;
+ }
+ header::after {
+ content: '';
+ position: absolute;
+ bottom: 0;
+ left: 0;
+ right: 0;
+ height: 1px;
+ background: linear-gradient(90deg, transparent, var(--electric-cyan), var(--magic-purple), transparent);
+ }
+ header h1 {
+ color: var(--title-color);
+ font-size: 2.8rem;
+ margin: 0;
+ text-shadow: 0 0 20px rgba(0, 210, 255, 0.4), 0 0 40px rgba(192, 132, 252, 0.3);
+ letter-spacing: 2px;
+ font-weight: 900;
+ text-transform: uppercase;
+ }
+ header p {
+ font-size: 1.1rem;
+ color: #a5f3fc;
+ margin: 15px 0 0 0;
+ letter-spacing: 4px;
+ font-weight: 600;
+ }
+ .container {
+ max-width: 950px;
+ margin: 40px auto;
+ padding: 0 20px;
+ }
+ .intro-box {
+ background-color: var(--glass-bg);
+ border: 1px solid var(--glass-border);
+ border-radius: 12px;
+ padding: 30px;
+ margin-bottom: 40px;
+ box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
+ backdrop-filter: blur(15px);
+ }
+ .intro-box h2 {
+ color: var(--title-color);
+ margin-top: 0;
+ font-size: 1.7rem;
+ text-shadow: 0 0 8px var(--electric-cyan);
+ border-bottom: 1px solid var(--glass-border);
+ padding-bottom: 15px;
+ font-weight: 800;
+ }
+ .intro-box p {
+ color: var(--text-color);
+ }
+ .spec-table {
+ width: 100%;
+ border-collapse: collapse;
+ margin: 30px 0;
+ background-color: rgba(2, 2, 5, 0.5);
+ border-radius: 8px;
+ overflow: hidden;
+ }
+ .spec-table th, .spec-table td {
+ border: 1px solid var(--glass-border);
+ padding: 14px;
+ text-align: left;
+ }
+ .spec-table th {
+ background-color: rgba(192, 132, 252, 0.1);
+ color: #38bdf8;
+ font-weight: 800;
+ }
+ .spec-table td {
+ color: #fff;
+ }
+ .post-list {
+ display: grid;
+ grid-template-columns: 1fr 1fr;
+ gap: 25px;
+ margin-bottom: 40px;
+ }
+ @media(max-width: 768px) {
+ .post-list {
+ grid-template-columns: 1fr;
+ }
+ }
+ .post-card {
+ background-color: var(--glass-bg);
+ border: 1px solid var(--glass-border);
+ border-radius: 12px;
+ padding: 25px;
+ transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+ position: relative;
+ overflow: hidden;
+ backdrop-filter: blur(10px);
+ }
+ .post-card::before {
+ content: '';
+ position: absolute;
+ top: 0;
+ left: 0;
+ width: 100%;
+ height: 2px;
+ background: linear-gradient(90deg, var(--electric-cyan), var(--magic-purple));
+ transform: scaleX(0);
+ transition: transform 0.3s ease;
+ }
+ .post-card:hover::before {
+ transform: scaleX(1);
+ }
+ .post-card:hover {
+ border-color: var(--magic-purple);
+ transform: translateY(-5px);
+ box-shadow: 0 10px 25px rgba(192, 132, 252, 0.15);
+ }
+ .post-card h3 {
+ margin-top: 0;
+ color: #fff;
+ font-size: 1.25rem;
+ }
+ .post-card h3 a {
+ color: #fff;
+ text-decoration: none;
+ transition: color 0.3s;
+ }
+ .post-card h3 a:hover {
+ color: var(--electric-cyan);
+ text-shadow: 0 0 5px var(--electric-cyan);
+ }
+ .post-card p {
+ font-size: 0.95rem;
+ color: #94a3b8;
+ }
+ .story-section {
+ background-color: var(--glass-bg);
+ border-left: 6px solid var(--electric-cyan);
+ padding: 30px;
+ margin-bottom: 40px;
+ border-radius: 0 12px 12px 0;
+ border: 1px solid var(--glass-border);
+ border-left: 6px solid var(--electric-cyan);
+ box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.2);
+ backdrop-filter: blur(15px);
+ }
+ .story-section h2 {
+ color: #fff;
+ margin-top: 0;
+ font-size: 1.6rem;
+ text-shadow: 0 0 10px var(--magic-purple);
+ font-weight: 800;
+ }
+ .story-section p {
+ color: var(--text-color);
+ }
+ .review-section {
+ margin-bottom: 40px;
+ }
+ .review-section h2 {
+ color: var(--electric-cyan);
+ text-shadow: 0 0 8px var(--electric-cyan);
+ border-bottom: 1px solid var(--glass-border);
+ padding-bottom: 15px;
+ font-weight: 800;
+ }
+ .review-card {
+ background-color: var(--glass-bg);
+ border-radius: 8px;
+ padding: 25px;
+ margin-bottom: 20px;
+ border: 1px solid var(--glass-border);
+ border-left: 4px solid var(--magic-purple);
+ transition: all 0.3s;
+ backdrop-filter: blur(10px);
+ }
+ .review-card:hover {
+ border-color: var(--electric-cyan);
+ box-shadow: 0 5px 15px rgba(0, 210, 255, 0.1);
+ }
+ .review-card .meta {
+ font-size: 0.9rem;
+ color: #e9d5ff;
+ margin-bottom: 12px;
+ font-weight: 800;
+ letter-spacing: 1px;
+ }
+ .review-card p {
+ margin: 0;
+ color: #f1f5f9;
+ font-style: italic;
+ }
+ .cta-section {
+ background: linear-gradient(135deg, rgba(2, 2, 5, 0.8) 0%, rgba(192, 132, 252, 0.3) 150%);
+ backdrop-filter: blur(20px);
+ border-radius: 12px;
+ padding: 45px;
+ text-align: center;
+ box-shadow: 0 10px 30px rgba(192, 132, 252, 0.15);
+ border: 1px solid var(--glass-border);
+ position: relative;
+ overflow: hidden;
+ }
+ .cta-section h2 {
+ margin-top: 0;
+ color: #fff;
+ font-size: 2.2rem;
+ text-shadow: 0 2px 10px rgba(0,0,0,0.8);
+ font-weight: 900;
+ }
+ .cta-section p {
+ color: #f1f5f9;
+ font-size: 1.15rem;
+ text-shadow: 0 1px 5px rgba(0,0,0,0.5);
+ }
+ .btn-call {
+ display: inline-block;
+ background-color: var(--bg-color);
+ color: var(--electric-cyan);
+ border: 1px solid var(--electric-cyan);
+ padding: 18px 40px;
+ font-size: 1.4rem;
+ font-weight: 900;
+ text-decoration: none;
+ border-radius: 8px;
+ margin-top: 25px;
+ transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+ box-shadow: 0 0 15px rgba(0, 210, 255, 0.3);
+ letter-spacing: 1px;
+ }
+ .btn-call:hover {
+ background-color: var(--electric-cyan);
+ color: #fff;
+ box-shadow: 0 0 30px var(--electric-cyan);
+ transform: scale(1.05);
+ }
+ footer {
+ text-align: center;
+ padding: 50px 20px;
+ border-top: 1px solid var(--glass-border);
+ color: #64748b;
+ font-size: 0.9rem;
+ background-color: rgba(2, 2, 5, 0.9);
+ }
+ </style>
+  <meta property="og:title" content="글 목록 (3/3) · t3b04-hj-club-cmp-2">
+  <meta property="og:description" content="t3b04-hj-club-cmp-2에 올라온 글 목록입니다.">
+  <meta property="og:url" content="https://hapjeong-song-spot.node-link.shop/posts-3.html">
+  <meta property="og:type" content="website">
+  <meta name="twitter:card" content="summary">
+</head>
+<body>
+  <div class="container">
+    <header>
+ <h1>GLASS_HJ_CLUB_CONSOLE</h1>
+ <p>Frosted Glass Overlay & High-End Club Metrics</p>
+</header>
+    <main>
+      <h1>글 목록</h1>
+      <p>전체 43개 · 3/3 페이지</p>
+      <ul class="post-list">
+      <li class="post-item">
+        <a class="post-item__link" href="posts/normal-3.html">normal 3</a>
+        <p class="post-item__summary">합정 클럽 비교를 위해서는 여러 가지 요소를 고려해야 합니다. 합정 지역은 클럽이 많은 지역 중 하나로, 다양한 클럽들이 존재합니다. 각 클럽마다 특징과 분위기가 다르기 때문에, 합정 클럽 비교를 </p>
+      </li>
+      <li class="post-item">
+        <a class="post-item__link" href="posts/review-001.html">합정 클럽? 거긴 걍 데커드 꿈속 같은 곳이지</a>
+        <p class="post-item__summary">night, cityscape, neon_lights, rain, wet_street, silhouette, walking, futuristic, dystopian, Blade_Runner_2049</p>
+      </li>
+      <li class="post-item">
+        <a class="post-item__link" href="posts/review-002.html">형님도 옛날엔 그랬지... 다크소울 1 데모판, 그 숨겨진 이야기</a>
+      </li>
+      </ul>
+    <nav class="pager">
+      <a class="pager__link" href="posts.html">1</a>
+      <a class="pager__link" href="posts-2.html">2</a>
+      <span class="pager__current">3</span>
+    </nav>
+    </main>
+  </div>
+</body>
+</html>

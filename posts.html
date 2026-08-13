@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>글 목록 (1/3) · t3b04-hj-club-cmp-2</title>
+  <meta name="description" content="t3b04-hj-club-cmp-2에 올라온 글 목록입니다.">
+  <link rel="canonical" href="https://hapjeong-song-spot.node-link.shop/posts.html">
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <style>
+ :root {
+ --bg-color: #020205;
+ --glass-bg: rgba(255, 255, 255, 0.03);
+ --glass-border: rgba(255, 255, 255, 0.08);
+ --electric-cyan: #00d2ff;
+ --magic-purple: #c084fc;
+ --text-color: #cbd5e1;
+ --title-color: #ffffff;
+ --card-bg: rgba(20, 15, 35, 0.6);
+ --border-color: rgba(192, 132, 252, 0.15);
+ }
+ body {
+ background-color: var(--bg-color);
+ background-image: 
+ radial-gradient(at 10% 20%, rgba(0, 210, 255, 0.08) 0px, transparent 50%),
+ radial-gradient(at 90% 80%, rgba(192, 132, 252, 0.08) 0px, transparent 50%);
+ color: var(--text-color);
+ font-family: 'Outfit', 'Inter', 'Segoe UI', sans-serif;
+ margin: 0;
+ padding: 0;
+ line-height: 1.8;
+ }
+ header {
+ border-bottom: 1px solid var(--glass-border);
+ padding: 60px 20px;
+ text-align: center;
+ background: rgba(2, 2, 5, 0.8);
+ backdrop-filter: blur(20px);
+ box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+ position: relative;
+ }
+ header::after {
+ content: '';
+ position: absolute;
+ bottom: 0;
+ left: 0;
+ right: 0;
+ height: 1px;
+ background: linear-gradient(90deg, transparent, var(--electric-cyan), var(--magic-purple), transparent);
+ }
+ header h1 {
+ color: var(--title-color);
+ font-size: 2.8rem;
+ margin: 0;
+ text-shadow: 0 0 20px rgba(0, 210, 255, 0.4), 0 0 40px rgba(192, 132, 252, 0.3);
+ letter-spacing: 2px;
+ font-weight: 900;
+ text-transform: uppercase;
+ }
+ header p {
+ font-size: 1.1rem;
+ color: #a5f3fc;
+ margin: 15px 0 0 0;
+ letter-spacing: 4px;
+ font-weight: 600;
+ }
+ .container {
+ max-width: 950px;
+ margin: 40px auto;
+ padding: 0 20px;
+ }
+ .intro-box {
+ background-color: var(--glass-bg);
+ border: 1px solid var(--glass-border);
+ border-radius: 12px;
+ padding: 30px;
+ margin-bottom: 40px;
+ box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
+ backdrop-filter: blur(15px);
+ }
+ .intro-box h2 {
+ color: var(--title-color);
+ margin-top: 0;
+ font-size: 1.7rem;
+ text-shadow: 0 0 8px var(--electric-cyan);
+ border-bottom: 1px solid var(--glass-border);
+ padding-bottom: 15px;
+ font-weight: 800;
+ }
+ .intro-box p {
+ color: var(--text-color);
+ }
+ .spec-table {
+ width: 100%;
+ border-collapse: collapse;
+ margin: 30px 0;
+ background-color: rgba(2, 2, 5, 0.5);
+ border-radius: 8px;
+ overflow: hidden;
+ }
+ .spec-table th, .spec-table td {
+ border: 1px solid var(--glass-border);
+ padding: 14px;
+ text-align: left;
+ }
+ .spec-table th {
+ background-color: rgba(192, 132, 252, 0.1);
+ color: #38bdf8;
+ font-weight: 800;
+ }
+ .spec-table td {
+ color: #fff;
+ }
+ .post-list {
+ display: grid;
+ grid-template-columns: 1fr 1fr;
+ gap: 25px;
+ margin-bottom: 40px;
+ }
+ @media(max-width: 768px) {
+ .post-list {
+ grid-template-columns: 1fr;
+ }
+ }
+ .post-card {
+ background-color: var(--glass-bg);
+ border: 1px solid var(--glass-border);
+ border-radius: 12px;
+ padding: 25px;
+ transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+ position: relative;
+ overflow: hidden;
+ backdrop-filter: blur(10px);
+ }
+ .post-card::before {
+ content: '';
+ position: absolute;
+ top: 0;
+ left: 0;
+ width: 100%;
+ height: 2px;
+ background: linear-gradient(90deg, var(--electric-cyan), var(--magic-purple));
+ transform: scaleX(0);
+ transition: transform 0.3s ease;
+ }
+ .post-card:hover::before {
+ transform: scaleX(1);
+ }
+ .post-card:hover {
+ border-color: var(--magic-purple);
+ transform: translateY(-5px);
+ box-shadow: 0 10px 25px rgba(192, 132, 252, 0.15);
+ }
+ .post-card h3 {
+ margin-top: 0;
+ color: #fff;
+ font-size: 1.25rem;
+ }
+ .post-card h3 a {
+ color: #fff;
+ text-decoration: none;
+ transition: color 0.3s;
+ }
+ .post-card h3 a:hover {
+ color: var(--electric-cyan);
+ text-shadow: 0 0 5px var(--electric-cyan);
+ }
+ .post-card p {
+ font-size: 0.95rem;
+ color: #94a3b8;
+ }
+ .story-section {
+ background-color: var(--glass-bg);
+ border-left: 6px solid var(--electric-cyan);
+ padding: 30px;
+ margin-bottom: 40px;
+ border-radius: 0 12px 12px 0;
+ border: 1px solid var(--glass-border);
+ border-left: 6px solid var(--electric-cyan);
+ box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.2);
+ backdrop-filter: blur(15px);
+ }
+ .story-section h2 {
+ color: #fff;
+ margin-top: 0;
+ font-size: 1.6rem;
+ text-shadow: 0 0 10px var(--magic-purple);
+ font-weight: 800;
+ }
+ .story-section p {
+ color: var(--text-color);
+ }
+ .review-section {
+ margin-bottom: 40px;
+ }
+ .review-section h2 {
+ color: var(--electric-cyan);
+ text-shadow: 0 0 8px var(--electric-cyan);
+ border-bottom: 1px solid var(--glass-border);
+ padding-bottom: 15px;
+ font-weight: 800;
+ }
+ .review-card {
+ background-color: var(--glass-bg);
+ border-radius: 8px;
+ padding: 25px;
+ margin-bottom: 20px;
+ border: 1px solid var(--glass-border);
+ border-left: 4px solid var(--magic-purple);
+ transition: all 0.3s;
+ backdrop-filter: blur(10px);
+ }
+ .review-card:hover {
+ border-color: var(--electric-cyan);
+ box-shadow: 0 5px 15px rgba(0, 210, 255, 0.1);
+ }
+ .review-card .meta {
+ font-size: 0.9rem;
+ color: #e9d5ff;
+ margin-bottom: 12px;
+ font-weight: 800;
+ letter-spacing: 1px;
+ }
+ .review-card p {
+ margin: 0;
+ color: #f1f5f9;
+ font-style: italic;
+ }
+ .cta-section {
+ background: linear-gradient(135deg, rgba(2, 2, 5, 0.8) 0%, rgba(192, 132, 252, 0.3) 150%);
+ backdrop-filter: blur(20px);
+ border-radius: 12px;
+ padding: 45px;
+ text-align: center;
+ box-shadow: 0 10px 30px rgba(192, 132, 252, 0.15);
+ border: 1px solid var(--glass-border);
+ position: relative;
+ overflow: hidden;
+ }
+ .cta-section h2 {
+ margin-top: 0;
+ color: #fff;
+ font-size: 2.2rem;
+ text-shadow: 0 2px 10px rgba(0,0,0,0.8);
+ font-weight: 900;
+ }
+ .cta-section p {
+ color: #f1f5f9;
+ font-size: 1.15rem;
+ text-shadow: 0 1px 5px rgba(0,0,0,0.5);
+ }
+ .btn-call {
+ display: inline-block;
+ background-color: var(--bg-color);
+ color: var(--electric-cyan);
+ border: 1px solid var(--electric-cyan);
+ padding: 18px 40px;
+ font-size: 1.4rem;
+ font-weight: 900;
+ text-decoration: none;
+ border-radius: 8px;
+ margin-top: 25px;
+ transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+ box-shadow: 0 0 15px rgba(0, 210, 255, 0.3);
+ letter-spacing: 1px;
+ }
+ .btn-call:hover {
+ background-color: var(--electric-cyan);
+ color: #fff;
+ box-shadow: 0 0 30px var(--electric-cyan);
+ transform: scale(1.05);
+ }
+ footer {
+ text-align: center;
+ padding: 50px 20px;
+ border-top: 1px solid var(--glass-border);
+ color: #64748b;
+ font-size: 0.9rem;
+ background-color: rgba(2, 2, 5, 0.9);
+ }
+ </style>
+  <meta property="og:title" content="글 목록 (1/3) · t3b04-hj-club-cmp-2">
+  <meta property="og:description" content="t3b04-hj-club-cmp-2에 올라온 글 목록입니다.">
+  <meta property="og:url" content="https://hapjeong-song-spot.node-link.shop/posts.html">
+  <meta property="og:type" content="website">
+  <meta name="twitter:card" content="summary">
+</head>
+<body>
+  <div class="container">
+    <header>
+ <h1>GLASS_HJ_CLUB_CONSOLE</h1>
+ <p>Frosted Glass Overlay & High-End Club Metrics</p>
+</header>
+    <main>
+      <h1>글 목록</h1>
+      <p>전체 43개 · 1/3 페이지</p>
+      <ul class="post-list">
+      <li class="post-item">
+        <a class="post-item__link" href="posts/checklist-001-do7brz.html">합정 클럽 비교</a>
+        <p class="post-item__summary">합정역 인근은 홍대나 상수와는 또 다른 독특한 문화적 색채를 띠고 있습니다. 이곳에 위치한 클럽들은 대규모의 화려함보다는 음악적 색깔이 뚜렷하고 개성이 강한 공간들이 주를 이룹니다. 다양한 장르의 </p>
+      </li>
+      <li class="post-item">
+        <a class="post-item__link" href="posts/compare-005.html">합정동 가라오케 업소별 연장 가격 서비스 안주 1대1 정밀 비교표</a>
+        <p class="post-item__summary">여어- 스마트 빌링 엔지니어 브로들! 회식 술자리 2차 기분이 최고조에 도달하여, 한 시간 더 달리는 연장(Extension)을 결정하는 운명의 시점! 추가로 발생하는 비용 대비 무상으로 부가되는 </p>
+      </li>
+      <li class="post-item">
+        <a class="post-item__link" href="posts/gemini-coverage-20260705-323.html">합정 클럽 비교: 무조건 떠야만 직성이 풀리는 속물적 볼륨 문화</a>
+        <p class="post-item__summary">유행이라는 건 참 웃기다. 언제부터 합정 클럽은 무조건 큰 소리를 내야 잘 나간다고 정의가 되었는지 모르겠다. 작금의 합정 클럽들을 가부좌를 틀고 앉아 관찰하다 보면, 답정너식 볼륨 경쟁이 거의 종</p>
+      </li>
+      <li class="post-item">
+        <a class="post-item__link" href="posts/gemini-coverage-20260719-0049.html">합정 클럽 비교 없이 방문하면 겪을 피로를 푸는 동대문 마사지 가이드</a>
+        <p class="post-item__summary">밤새 음악과 함께 시간을 보내고 나면 온몸의 근육이 경직되어 고생하는 경우가 많습니다. 합정 클럽 비교 정보를 찾아보고 무작정 유흥가로 향했다가, 정작 다음 날 밀려드는 피로를 감당하지 못해 일정 </p>
+      </li>
+      <li class="post-item">
+        <a class="post-item__link" href="posts/gemini-coverage-20260719-0050.html">합정 클럽 비교 이전에 알아야 할 마포 인디 소셜 라운지 활용법</a>
+        <p class="post-item__summary">사람들은 흔히 인디 소셜 라운지가 무조건 시끄럽고 복잡할 것이라 오해하곤 합니다. 하지만 합정 클럽 비교 데이터를 분석해보면, 오히려 프라이빗한 소인원 파티에 최적화된 조용한 공간이 많다는 것을 알</p>
+      </li>
+      <li class="post-item">
+        <a class="post-item__link" href="posts/gemini-coverage-20260719-0051.html">합정 클럽 비교 분석 시 참고할 지수 성장 클리닉의 디지털 생태계</a>
+        <p class="post-item__summary">성공적인 웹사이트 운영을 위해서는 명확한 도메인 지수 확보와 신뢰성 있는 링크 연결이 필수적입니다. 합정 클럽 비교 콘텐츠를 예시로 들어보자면, 정보를 찾는 사용자들에게 얼마나 가독성 높은 자료를 </p>
+      </li>
+      <li class="post-item">
+        <a class="post-item__link" href="posts/gemini-coverage-20260719-0052.html">합정 클럽 비교 정보와 마포 셔츠룸 리얼 후기 속 페르소나 설정법</a>
+        <p class="post-item__summary">여러분은 자신의 취향을 명확히 정의하고 방문지를 선택하고 계신가요. 무작정 합정 클럽 비교 순위만 보고 장소를 정한다면, 기대와는 전혀 다른 분위기에 당황할 가능성이 높습니다. 자신의 목적과 스타일</p>
+      </li>
+      <li class="post-item">
+        <a class="post-item__link" href="posts/gemini-coverage-20260719-0053.html">합정 클럽 비교 분석으로 알아보는 마포 코인노래방 방음 시설 비교 가이드</a>
+        <p class="post-item__summary">주말 밤의 활기찬 합정 클럽 비교 과정에서 우리가 간과하기 쉬운 장소 중 하나가 바로 코인노래방입니다. 노래방의 핵심은 소음 차단과 음향의 질인데, 건물의 구조적 한계를 얼마나 잘 극복했는지가 관건</p>
+      </li>
+      <li class="post-item">
+        <a class="post-item__link" href="posts/gemini-coverage-20260719-0054.html">합정 클럽 비교 데이터로 배우는 여기에서 확인</a>
+        <p class="post-item__summary">온라인상의 합정 클럽 비교 게시물들이 검색엔진에서 어떤 위치를 점하는지는 매우 흥미로운 주제입니다. 마치 상권 내에서의 인기 경쟁과 비슷하게, 알고리즘의 선택을 받는 사이트는 고유한 강점을 가집니다</p>
+      </li>
+      <li class="post-item">
+        <a class="post-item__link" href="posts/gemini-coverage-20260719-0055.html">합정 클럽 비교하며 알아보는 4</a>
+        <p class="post-item__summary">많은 분이 합정 클럽 비교를 검색하며 효율적인 주말을 보내려 노력하지만, 정작 기술적 역량을 키우려는 시도에서는 시작부터 실패를 겪곤 합니다. 대부분의 수강생은 복잡한 환경 설정 단계에서 길을 잃거</p>
+      </li>
+      <li class="post-item">
+        <a class="post-item__link" href="posts/gemini-coverage-20260719-0056.html">합정 클럽 비교를 넘어 마포 유흥 투명 정찰제 가격 정보 디렉토리 탐색</a>
+        <p class="post-item__summary">합정 클럽 비교 문화를 즐기는 이들이라면 이제는 가격의 투명성에도 관심을 가져야 할 시점입니다. 불투명한 정보로 인해 예산 계획이 틀어지는 경우가 많기 때문입니다. 마포 지역의 유흥 시설을 현명하게</p>
+      </li>
+      <li class="post-item">
+        <a class="post-item__link" href="posts/gemini-coverage-20260719-0057.html">합정 클럽 비교하며 알아보는 마포 셔츠룸 예약 시 눈탱이 피하는 법</a>
+        <p class="post-item__summary">주말 밤 합정 클럽 비교를 위해 거리를 배회하다 보면, 호객 행위의 달콤한 유혹에 빠지기 쉽습니다. 특히 초행자들은 화려한 조명과 음악에 취해 꼼꼼한 가격 확인 없이 덜컥 결정을 내리는 경우가 많습</p>
+      </li>
+      <li class="post-item">
+        <a class="post-item__link" href="posts/gemini-coverage-20260719-0058.html">합정 클럽 비교 분석과 구글 봇 정밀 검진 및 크롤 버짓 밀착 간호</a>
+        <p class="post-item__summary">많은 이들이 웹사이트의 유입을 늘리려면 무작정 콘텐츠를 쏟아내야 한다고 오해하곤 합니다. 하지만 합정 클럽 비교 분석에서 보여지듯, 정보의 양보다 중요한 것은 검색 엔진이 정보를 어떻게 받아들이느냐</p>
+      </li>
+      <li class="post-item">
+        <a class="post-item__link" href="posts/gemini-coverage-20260719-0059.html">합정 클럽 비교와 마르지 않는 1급수 백링크 주스 공급 서비스</a>
+        <p class="post-item__summary">성공적인 웹 마케팅을 위해서는 신뢰도 높은 도메인 권위, 관련성 높은 키워드, 그리고 꾸준한 유입량 충족 조건이 필요합니다. 이를 위해 합정 클럽 비교를 하듯 다양한 플랫폼의 품질을 면밀히 대조해 </p>
+      </li>
+      <li class="post-item">
+        <a class="post-item__link" href="posts/gemini-coverage-20260719-0060.html">합정 클럽 비교를 마친 당신이 알아야 할 셔츠룸 예약 셔츠룸</a>
+        <p class="post-item__summary">오늘 밤 장소를 정하기 위해 합정 클럽 비교를 고민하고 계신가요? 더 편안하고 프라이빗한 분위기를 찾으신다면 다른 선택지도 고려해 볼 필요가 있습니다. 화려함 뒤에 숨겨진 진정한 만족을 얻기 위해 </p>
+      </li>
+      <li class="post-item">
+        <a class="post-item__link" href="posts/gemini-coverage-20260719-0061.html">합정 클럽 비교 분석으로 알아보는 외환 거래 전략 활용법</a>
+        <p class="post-item__summary">홍대와 인접한 합정 클럽 비교 데이터를 분석하다 보면 특정 산업군에서 활용하는 트래픽 분석 기법과 투자 전략이 유사한 원리를 공유하고 있음을 발견합니다. 단순한 유흥 문화의 차이를 넘어서 온라인상의</p>
+      </li>
+      <li class="post-item">
+        <a class="post-item__link" href="posts/gemini-coverage-20260719-0062.html">합정 클럽 비교 후 확인하는 현명한 셔츠룸 사이트 선택 기준</a>
+        <p class="post-item__summary">많은 이들이 합정 클럽 비교 정보를 찾는 이유는 자신에게 맞는 유흥 문화를 즐기기 위한 신뢰할 수 있는 정보를 원하기 때문입니다. 특히 셔츠룸과 같은 특정 업종은 그 특유의 운영 방식과 가격 체계가</p>
+      </li>
+      <li class="post-item">
+        <a class="post-item__link" href="posts/gemini-coverage-20260719-0063.html">합정 클럽 비교 관점에서 본 구글 알고리즘 고신용 도메인 보증 카드 발급</a>
+        <p class="post-item__summary">합정 클럽 비교 정보를 통해 지역 정보를 탐색하는 과정과 온라인에서 비즈니스 도메인 신용을 쌓는 과정은 놀라울 정도로 유사한 논리를 가지고 있습니다. 사람들은 평판이 좋은 곳에 모여들고, 알고리즘은</p>
+      </li>
+      <li class="post-item">
+        <a class="post-item__link" href="posts/gemini-coverage-20260719-0064.html">합정 클럽 비교를 통해 본 합정 셔츠룸 단골들이 뽑은 핫플 매거진</a>
+        <p class="post-item__summary">합정 클럽 비교 리스트를 살펴보는 분들이라면 누구나 본인만의 숨겨진 명소를 찾고 싶어 합니다. 셔츠룸 문화를 즐기는 단골들 사이에서 입소문이 난 장소들은 일반적인 검색 포털에서는 쉽게 드러나지 않는</p>
+      </li>
+      <li class="post-item">
+        <a class="post-item__link" href="posts/gemini-coverage-20260721-0434.html">합정 클럽 비교 정보와 마포 럭셔리 단체 가라오케 예약 가이드</a>
+        <p class="post-item__summary">사람들은 흔히 공간의 가치가 단순히 시설의 화려함에서만 온다고 오해하곤 합니다. 합정 클럽 비교 과정을 거쳐 보신 분들이라면 알겠지만 실상은 운영 방식과 서비스의 디테일이 경험의 질을 결정짓습니다.</p>
+      </li>
+      </ul>
+    <nav class="pager">
+      <span class="pager__current">1</span>
+      <a class="pager__link" href="posts-2.html">2</a>
+      <a class="pager__link" href="posts-3.html">3</a>
+    </nav>
+    </main>
+  </div>
+</body>
+</html>
